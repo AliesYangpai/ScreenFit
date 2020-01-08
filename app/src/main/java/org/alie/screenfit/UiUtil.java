@@ -92,4 +92,25 @@ public class UiUtil {
     public float getVerticalScale() {
         return displayMetricsHeight / STANDER_HEIGHT;
     }
+
+    public void showDisplayAbout(boolean tag) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        WindowManager windowManager = (WindowManager) weakReference.get().getSystemService(Context.WINDOW_SERVICE);
+       if(tag) {
+           windowManager.getDefaultDisplay().getMetrics(displayMetrics);
+       }else {
+           windowManager.getDefaultDisplay().getRealMetrics(displayMetrics);
+       }
+
+        float density = displayMetrics.density;
+        int densityDpi = displayMetrics.densityDpi;
+        float scaledDensity = displayMetrics.scaledDensity;
+        int widthPixels = displayMetrics.widthPixels;
+        int heightPixels = displayMetrics.heightPixels;
+        float xdpi = displayMetrics.xdpi;
+        float ydpi = displayMetrics.ydpi;
+        Log.i(TAG,"getMetrics实例化后参数数据---"+"density:"+density+" densityDpi:"+
+                densityDpi+" scaledDensity:"+scaledDensity+" widthPixels:"+widthPixels+" heightPixels:"+heightPixels
+        +" xdpi:"+xdpi+" ydpi:"+ydpi);
+    }
 }
